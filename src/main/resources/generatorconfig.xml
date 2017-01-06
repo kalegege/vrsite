@@ -38,7 +38,8 @@
 <!--     <table tableName="vr_footstep" domainObjectName="FootStep"></table> -->
 <!--     <table tableName="vr_hotel" domainObjectName="Hotel"></table> -->
 <!--     <table tableName="vr_site" domainObjectName="Site"></table> -->
-    
-    <table tableName="vr_recommend" domainObjectName="Recommend"></table>
+<!--     <table tableName="vr_recommend" domainObjectName="Recommend"></table> -->
+<!--     <table tableName="vr_footstep" domainObjectName="FootStep"></table> -->
+    <table tableName="vr_city_hotel" domainObjectName="CityHotel"></table>
     </context>
 </generatorConfiguration>

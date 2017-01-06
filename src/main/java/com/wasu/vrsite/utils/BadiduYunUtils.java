@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
 import com.wasu.vrsite.entity.GeoSearchDO;
+import com.wasu.vrsite.entity.GeocoderDO;
+import com.wasu.vrsite.entity.PoiDO;
 import com.wasu.vrsite.entity.Response;
 import com.wasu.vrsite.entity.ResultCode;
 import com.wasu.vrsite.exception.MyException;
@@ -58,8 +60,10 @@ public class BadiduYunUtils {
 	//（支持多字段排序）；filter参数可以完成对指定数据范围的筛选。
 	public GeoSearchDO geosearch(double longitude ,double latitude , int radius) throws MyException{
 		try {
+			java.text.DecimalFormat   df   =new   java.text.DecimalFormat("#.000000"); 
+			
 			String url = "http://api.map.baidu.com/geosearch/v3/nearby";
-			url=url+"?ak=5VLpwNVFKqD6M0A0gVIBvfVuBgxBFEmS&geotable_id=155102&location="+longitude+","+latitude+"&radius="+ radius+"&tags="+ "酒店";
+			url=url+"?ak=5VLpwNVFKqD6M0A0gVIBvfVuBgxBFEmS&geotable_id=155102&location="+df.format(longitude)+","+df.format(latitude)+"&radius="+ radius+"&tags="+ "酒店";
 			String result = LocalHttpRequest.get(url);
 			return JSON.parseObject(result, GeoSearchDO.class);
 		} catch (Exception e) {
@@ -88,6 +92,32 @@ public class BadiduYunUtils {
 			url=url+"?ak=5VLpwNVFKqD6M0A0gVIBvfVuBgxBFEmS&geotable_id=155102?q="+ keywords;
 			String result = LocalHttpRequest.get(url);
 			return JSON.parseObject(result, GeoSearchDO.class);
+		} catch (Exception e) {
+			throw new MyException(ResultCode.DAO_DEF_EXCEPTION, e);
+		}
+	}
+	
+	//查询指定id的数据（poi）详情接口
+	public PoiDO idSearch(String id) throws MyException{
+		try {
+			String url = "http://api.map.baidu.com/geodata/v3/poi/detail";
+			url=url+"?ak=5VLpwNVFKqD6M0A0gVIBvfVuBgxBFEmS&geotable_id=155102&id="+ id;
+			String result = LocalHttpRequest.get(url);
+			return JSON.parseObject(result, PoiDO.class);
+		} catch (Exception e) {
+			throw new MyException(ResultCode.DAO_DEF_EXCEPTION, e);
+		}
+	}
+	
+	//根据经度和纬度查询所在城市
+	public GeocoderDO geocoder(double longitude ,double latitude ) throws MyException{
+		try {
+			java.text.DecimalFormat   df   =new   java.text.DecimalFormat("#.000000");
+			
+			String url = "http://api.map.baidu.com/geocoder/v2/";
+			url=url+"?ak=5VLpwNVFKqD6M0A0gVIBvfVuBgxBFEmS&location="+df.format(latitude)+","+df.format(longitude)+"&output=json&pois=1";
+			String result = LocalHttpRequest.get(url);
+			return JSON.parseObject(result, GeocoderDO.class);
 		} catch (Exception e) {
 			throw new MyException(ResultCode.DAO_DEF_EXCEPTION, e);
 		}

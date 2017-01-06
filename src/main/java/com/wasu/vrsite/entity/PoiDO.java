@@ -1,12 +1,12 @@
 package com.wasu.vrsite.entity;
 
 
-public class Response {
+public class PoiDO {
 	private int status;
 	
-	private int id;
-	
 	private String message;
+	
+	private PoiDetailDO poi;
 
 	public int getStatus() {
 		return status;
@@ -16,14 +16,6 @@ public class Response {
 		this.status = status;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public String getMessage() {
 		return message;
 	}
@@ -31,6 +23,15 @@ public class Response {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+
+	public PoiDetailDO getPoi() {
+		return poi;
+	}
+
+	public void setPoi(PoiDetailDO poi) {
+		this.poi = poi;
+	}
 	
 	
+
 }

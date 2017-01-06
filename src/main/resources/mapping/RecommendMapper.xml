@@ -5,12 +5,10 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="uid" property="uid" jdbcType="INTEGER" />
-    <result column="poster1" property="poster1" jdbcType="VARCHAR" />
-    <result column="poster2" property="poster2" jdbcType="VARCHAR" />
-    <result column="poster3" property="poster3" jdbcType="VARCHAR" />
-    <result column="poster4" property="poster4" jdbcType="VARCHAR" />
-    <result column="poster5" property="poster5" jdbcType="VARCHAR" />
-    <result column="poster6" property="poster6" jdbcType="VARCHAR" />
+    <result column="poster" property="poster" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="longitude" property="longitude" jdbcType="VARCHAR" />
+    <result column="latitude" property="latitude" jdbcType="VARCHAR" />
     <result column="description" property="description" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="INTEGER" />
@@ -76,8 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, name, uid, poster1, poster2, poster3, poster4, poster5, poster6, description, 
-    type, status, gmt_create, gmt_modified
+    id, name, uid, poster, url, longitude, latitude, description, type, status, gmt_create, 
+    gmt_modified
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wasu.vrsite.entity.RecommendExample" >
     select
@@ -111,15 +109,15 @@
   </delete>
   <insert id="insert" parameterType="com.wasu.vrsite.entity.Recommend" >
     insert into vr_recommend (id, name, uid, 
-      poster1, poster2, poster3, 
-      poster4, poster5, poster6, 
-      description, type, status, 
-      gmt_create, gmt_modified)
+      poster, url, longitude, 
+      latitude, description, type, 
+      status, gmt_create, gmt_modified
+      )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{uid,jdbcType=INTEGER}, 
-      #{poster1,jdbcType=VARCHAR}, #{poster2,jdbcType=VARCHAR}, #{poster3,jdbcType=VARCHAR}, 
-      #{poster4,jdbcType=VARCHAR}, #{poster5,jdbcType=VARCHAR}, #{poster6,jdbcType=VARCHAR}, 
-      #{description,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
-      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
+      #{poster,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, 
+      #{latitude,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.wasu.vrsite.entity.Recommend" >
     insert into vr_recommend
@@ -133,23 +131,17 @@
       <if test="uid != null" >
         uid,
       </if>
-      <if test="poster1 != null" >
-        poster1,
+      <if test="poster != null" >
+        poster,
       </if>
-      <if test="poster2 != null" >
-        poster2,
+      <if test="url != null" >
+        url,
       </if>
-      <if test="poster3 != null" >
-        poster3,
+      <if test="longitude != null" >
+        longitude,
       </if>
-      <if test="poster4 != null" >
-        poster4,
-      </if>
-      <if test="poster5 != null" >
-        poster5,
-      </if>
-      <if test="poster6 != null" >
-        poster6,
+      <if test="latitude != null" >
+        latitude,
       </if>
       <if test="description != null" >
         description,
@@ -177,23 +169,17 @@
       <if test="uid != null" >
         #{uid,jdbcType=INTEGER},
       </if>
-      <if test="poster1 != null" >
-        #{poster1,jdbcType=VARCHAR},
+      <if test="poster != null" >
+        #{poster,jdbcType=VARCHAR},
       </if>
-      <if test="poster2 != null" >
-        #{poster2,jdbcType=VARCHAR},
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
       </if>
-      <if test="poster3 != null" >
-        #{poster3,jdbcType=VARCHAR},
+      <if test="longitude != null" >
+        #{longitude,jdbcType=VARCHAR},
       </if>
-      <if test="poster4 != null" >
-        #{poster4,jdbcType=VARCHAR},
-      </if>
-      <if test="poster5 != null" >
-        #{poster5,jdbcType=VARCHAR},
-      </if>
-      <if test="poster6 != null" >
-        #{poster6,jdbcType=VARCHAR},
+      <if test="latitude != null" >
+        #{latitude,jdbcType=VARCHAR},
       </if>
       <if test="description != null" >
         #{description,jdbcType=VARCHAR},
@@ -230,23 +216,17 @@
       <if test="record.uid != null" >
         uid = #{record.uid,jdbcType=INTEGER},
       </if>
-      <if test="record.poster1 != null" >
-        poster1 = #{record.poster1,jdbcType=VARCHAR},
+      <if test="record.poster != null" >
+        poster = #{record.poster,jdbcType=VARCHAR},
       </if>
-      <if test="record.poster2 != null" >
-        poster2 = #{record.poster2,jdbcType=VARCHAR},
+      <if test="record.url != null" >
+        url = #{record.url,jdbcType=VARCHAR},
       </if>
-      <if test="record.poster3 != null" >
-        poster3 = #{record.poster3,jdbcType=VARCHAR},
+      <if test="record.longitude != null" >
+        longitude = #{record.longitude,jdbcType=VARCHAR},
       </if>
-      <if test="record.poster4 != null" >
-        poster4 = #{record.poster4,jdbcType=VARCHAR},
-      </if>
-      <if test="record.poster5 != null" >
-        poster5 = #{record.poster5,jdbcType=VARCHAR},
-      </if>
-      <if test="record.poster6 != null" >
-        poster6 = #{record.poster6,jdbcType=VARCHAR},
+      <if test="record.latitude != null" >
+        latitude = #{record.latitude,jdbcType=VARCHAR},
       </if>
       <if test="record.description != null" >
         description = #{record.description,jdbcType=VARCHAR},
@@ -273,12 +253,10 @@
     set id = #{record.id,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
       uid = #{record.uid,jdbcType=INTEGER},
-      poster1 = #{record.poster1,jdbcType=VARCHAR},
-      poster2 = #{record.poster2,jdbcType=VARCHAR},
-      poster3 = #{record.poster3,jdbcType=VARCHAR},
-      poster4 = #{record.poster4,jdbcType=VARCHAR},
-      poster5 = #{record.poster5,jdbcType=VARCHAR},
-      poster6 = #{record.poster6,jdbcType=VARCHAR},
+      poster = #{record.poster,jdbcType=VARCHAR},
+      url = #{record.url,jdbcType=VARCHAR},
+      longitude = #{record.longitude,jdbcType=VARCHAR},
+      latitude = #{record.latitude,jdbcType=VARCHAR},
       description = #{record.description,jdbcType=VARCHAR},
       type = #{record.type,jdbcType=INTEGER},
       status = #{record.status,jdbcType=INTEGER},
@@ -297,23 +275,17 @@
       <if test="uid != null" >
         uid = #{uid,jdbcType=INTEGER},
       </if>
-      <if test="poster1 != null" >
-        poster1 = #{poster1,jdbcType=VARCHAR},
+      <if test="poster != null" >
+        poster = #{poster,jdbcType=VARCHAR},
       </if>
-      <if test="poster2 != null" >
-        poster2 = #{poster2,jdbcType=VARCHAR},
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
       </if>
-      <if test="poster3 != null" >
-        poster3 = #{poster3,jdbcType=VARCHAR},
+      <if test="longitude != null" >
+        longitude = #{longitude,jdbcType=VARCHAR},
       </if>
-      <if test="poster4 != null" >
-        poster4 = #{poster4,jdbcType=VARCHAR},
-      </if>
-      <if test="poster5 != null" >
-        poster5 = #{poster5,jdbcType=VARCHAR},
-      </if>
-      <if test="poster6 != null" >
-        poster6 = #{poster6,jdbcType=VARCHAR},
+      <if test="latitude != null" >
+        latitude = #{latitude,jdbcType=VARCHAR},
       </if>
       <if test="description != null" >
         description = #{description,jdbcType=VARCHAR},
@@ -337,12 +309,10 @@
     update vr_recommend
     set name = #{name,jdbcType=VARCHAR},
       uid = #{uid,jdbcType=INTEGER},
-      poster1 = #{poster1,jdbcType=VARCHAR},
-      poster2 = #{poster2,jdbcType=VARCHAR},
-      poster3 = #{poster3,jdbcType=VARCHAR},
-      poster4 = #{poster4,jdbcType=VARCHAR},
-      poster5 = #{poster5,jdbcType=VARCHAR},
-      poster6 = #{poster6,jdbcType=VARCHAR},
+      poster = #{poster,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
       type = #{type,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER},

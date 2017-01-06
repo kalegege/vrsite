@@ -4,6 +4,7 @@ package com.wasu.vrsite.entity;
 import java.util.List;
 
 import com.wasu.vrsite.entity.GeoSearchDTO;
+
 public class GeoSearchDO {
 	
 	private int status;
@@ -45,4 +46,6 @@ public class GeoSearchDO {
 	public void setContents(List<GeoSearchDTO> contents) {
 		this.contents = contents;
 	}
+	
+	
 }

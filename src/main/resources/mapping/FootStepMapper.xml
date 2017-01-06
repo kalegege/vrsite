@@ -3,11 +3,11 @@
 <mapper namespace="com.wasu.vrsite.dao.FootStepMapper" >
   <resultMap id="BaseResultMap" type="com.wasu.vrsite.entity.FootStep" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="IMEI" property="imei" jdbcType="INTEGER" />
-    <result column="hotel_name" property="hotelName" jdbcType="VARCHAR" />
-    <result column="hotel_id" property="hotelId" jdbcType="INTEGER" />
-    <result column="city_name" property="cityName" jdbcType="VARCHAR" />
-    <result column="city_id" property="cityId" jdbcType="INTEGER" />
+    <result column="IMEI" property="imei" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="longitude" property="longitude" jdbcType="VARCHAR" />
+    <result column="latitude" property="latitude" jdbcType="VARCHAR" />
     <result column="count" property="count" jdbcType="INTEGER" />
     <result column="type" property="type" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="INTEGER" />
@@ -73,8 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, IMEI, hotel_name, hotel_id, city_name, city_id, count, type, status, gmt_create, 
-    gmt_modified
+    id, IMEI, name, uid, longitude, latitude, count, type, status, gmt_create, gmt_modified
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wasu.vrsite.entity.FootStepExample" >
     select
@@ -107,14 +106,14 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.wasu.vrsite.entity.FootStep" >
-    insert into vr_footstep (id, IMEI, hotel_name, 
-      hotel_id, city_name, city_id, 
+    insert into vr_footstep (id, IMEI, name, 
+      uid, longitude, latitude, 
       count, type, status, 
       gmt_create, gmt_modified)
-    values (#{id,jdbcType=INTEGER}, #{imei,jdbcType=INTEGER}, #{hotelName,jdbcType=VARCHAR}, 
-      #{hotelId,jdbcType=INTEGER}, #{cityName,jdbcType=VARCHAR}, #{cityId,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{imei,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{uid,jdbcType=INTEGER}, #{longitude,jdbcType=VARCHAR}, #{latitude,jdbcType=VARCHAR}, 
       #{count,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
-      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
+      now(), now())
   </insert>
   <insert id="insertSelective" parameterType="com.wasu.vrsite.entity.FootStep" >
     insert into vr_footstep
@@ -125,17 +124,17 @@
       <if test="imei != null" >
         IMEI,
       </if>
-      <if test="hotelName != null" >
-        hotel_name,
+      <if test="name != null" >
+        name,
       </if>
-      <if test="hotelId != null" >
-        hotel_id,
+      <if test="uid != null" >
+        uid,
       </if>
-      <if test="cityName != null" >
-        city_name,
+      <if test="longitude != null" >
+        longitude,
       </if>
-      <if test="cityId != null" >
-        city_id,
+      <if test="latitude != null" >
+        latitude,
       </if>
       <if test="count != null" >
         count,
@@ -158,19 +157,19 @@
         #{id,jdbcType=INTEGER},
       </if>
       <if test="imei != null" >
-        #{imei,jdbcType=INTEGER},
+        #{imei,jdbcType=VARCHAR},
       </if>
-      <if test="hotelName != null" >
-        #{hotelName,jdbcType=VARCHAR},
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
       </if>
-      <if test="hotelId != null" >
-        #{hotelId,jdbcType=INTEGER},
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
       </if>
-      <if test="cityName != null" >
-        #{cityName,jdbcType=VARCHAR},
+      <if test="longitude != null" >
+        #{longitude,jdbcType=VARCHAR},
       </if>
-      <if test="cityId != null" >
-        #{cityId,jdbcType=INTEGER},
+      <if test="latitude != null" >
+        #{latitude,jdbcType=VARCHAR},
       </if>
       <if test="count != null" >
         #{count,jdbcType=INTEGER},
@@ -202,19 +201,19 @@
         id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.imei != null" >
-        IMEI = #{record.imei,jdbcType=INTEGER},
+        IMEI = #{record.imei,jdbcType=VARCHAR},
       </if>
-      <if test="record.hotelName != null" >
-        hotel_name = #{record.hotelName,jdbcType=VARCHAR},
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.hotelId != null" >
-        hotel_id = #{record.hotelId,jdbcType=INTEGER},
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=INTEGER},
       </if>
-      <if test="record.cityName != null" >
-        city_name = #{record.cityName,jdbcType=VARCHAR},
+      <if test="record.longitude != null" >
+        longitude = #{record.longitude,jdbcType=VARCHAR},
       </if>
-      <if test="record.cityId != null" >
-        city_id = #{record.cityId,jdbcType=INTEGER},
+      <if test="record.latitude != null" >
+        latitude = #{record.latitude,jdbcType=VARCHAR},
       </if>
       <if test="record.count != null" >
         count = #{record.count,jdbcType=INTEGER},
@@ -228,9 +227,7 @@
       <if test="record.gmtCreate != null" >
         gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.gmtModified != null" >
-        gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
-      </if>
+        gmt_modified = now(),
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -239,16 +236,16 @@
   <update id="updateByExample" parameterType="map" >
     update vr_footstep
     set id = #{record.id,jdbcType=INTEGER},
-      IMEI = #{record.imei,jdbcType=INTEGER},
-      hotel_name = #{record.hotelName,jdbcType=VARCHAR},
-      hotel_id = #{record.hotelId,jdbcType=INTEGER},
-      city_name = #{record.cityName,jdbcType=VARCHAR},
-      city_id = #{record.cityId,jdbcType=INTEGER},
+      IMEI = #{record.imei,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      uid = #{record.uid,jdbcType=INTEGER},
+      longitude = #{record.longitude,jdbcType=VARCHAR},
+      latitude = #{record.latitude,jdbcType=VARCHAR},
       count = #{record.count,jdbcType=INTEGER},
       type = #{record.type,jdbcType=INTEGER},
       status = #{record.status,jdbcType=INTEGER},
       gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
-      gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP}
+      gmt_modified = now()
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -257,19 +254,19 @@
     update vr_footstep
     <set >
       <if test="imei != null" >
-        IMEI = #{imei,jdbcType=INTEGER},
+        IMEI = #{imei,jdbcType=VARCHAR},
       </if>
-      <if test="hotelName != null" >
-        hotel_name = #{hotelName,jdbcType=VARCHAR},
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="hotelId != null" >
-        hotel_id = #{hotelId,jdbcType=INTEGER},
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
       </if>
-      <if test="cityName != null" >
-        city_name = #{cityName,jdbcType=VARCHAR},
+      <if test="longitude != null" >
+        longitude = #{longitude,jdbcType=VARCHAR},
       </if>
-      <if test="cityId != null" >
-        city_id = #{cityId,jdbcType=INTEGER},
+      <if test="latitude != null" >
+        latitude = #{latitude,jdbcType=VARCHAR},
       </if>
       <if test="count != null" >
         count = #{count,jdbcType=INTEGER},
@@ -283,24 +280,22 @@
       <if test="gmtCreate != null" >
         gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       </if>
-      <if test="gmtModified != null" >
-        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
-      </if>
+        gmt_modified = now(),
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.wasu.vrsite.entity.FootStep" >
     update vr_footstep
-    set IMEI = #{imei,jdbcType=INTEGER},
-      hotel_name = #{hotelName,jdbcType=VARCHAR},
-      hotel_id = #{hotelId,jdbcType=INTEGER},
-      city_name = #{cityName,jdbcType=VARCHAR},
-      city_id = #{cityId,jdbcType=INTEGER},
+    set IMEI = #{imei,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=INTEGER},
+      longitude = #{longitude,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=VARCHAR},
       count = #{count,jdbcType=INTEGER},
       type = #{type,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
-      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+      gmt_modified = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

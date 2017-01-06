@@ -10,9 +10,9 @@
 
 		<!-- 数据库配置  -->  
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver" 
-			connectionURL="jdbc:mysql://125.210.141.30/vrsite?useUnicode=true&amp;characterEncoding=GBK" 
-			userId="admin" 
-			password="Hello1234">   
+			connectionURL="jdbc:mysql://121.40.165.181/vrsite?useUnicode=true&amp;characterEncoding=GBK"
+			userId="root"
+			password="r00t0neio">
 		</jdbcConnection>   
 
     <javaTypeResolver>

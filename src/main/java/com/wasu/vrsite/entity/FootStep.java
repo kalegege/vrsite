@@ -5,15 +5,15 @@ import java.util.Date;
 public class FootStep {
     private Integer id;
 
-    private Integer imei;
+    private String imei;
 
-    private String hotelName;
+    private String name;
 
-    private Integer hotelId;
+    private Integer uid;
 
-    private String cityName;
+    private String longitude;
 
-    private Integer cityId;
+    private String latitude;
 
     private Integer count;
 
@@ -33,44 +33,44 @@ public class FootStep {
         this.id = id;
     }
 
-    public Integer getImei() {
+    public String getImei() {
         return imei;
     }
 
-    public void setImei(Integer imei) {
-        this.imei = imei;
+    public void setImei(String imei) {
+        this.imei = imei == null ? null : imei.trim();
     }
 
-    public String getHotelName() {
-        return hotelName;
+    public String getName() {
+        return name;
     }
 
-    public void setHotelName(String hotelName) {
-        this.hotelName = hotelName == null ? null : hotelName.trim();
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
-    public Integer getHotelId() {
-        return hotelId;
+    public Integer getUid() {
+        return uid;
     }
 
-    public void setHotelId(Integer hotelId) {
-        this.hotelId = hotelId;
+    public void setUid(Integer uid) {
+        this.uid = uid;
     }
 
-    public String getCityName() {
-        return cityName;
+    public String getLongitude() {
+        return longitude;
     }
 
-    public void setCityName(String cityName) {
-        this.cityName = cityName == null ? null : cityName.trim();
+    public void setLongitude(String longitude) {
+        this.longitude = longitude == null ? null : longitude.trim();
     }
 
-    public Integer getCityId() {
-        return cityId;
+    public String getLatitude() {
+        return latitude;
     }
 
-    public void setCityId(Integer cityId) {
-        this.cityId = cityId;
+    public void setLatitude(String latitude) {
+        this.latitude = latitude == null ? null : latitude.trim();
     }
 
     public Integer getCount() {

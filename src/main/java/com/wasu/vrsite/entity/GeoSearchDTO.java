@@ -5,7 +5,7 @@ public class GeoSearchDTO {
 	
 	private int uid;
 	
-	private String geotable_id;
+	private int geotable_id;
 	
 	private String title;
 	
@@ -13,9 +13,15 @@ public class GeoSearchDTO {
 	
 	private String province;
 	
+	private int create_time;
+	
 	private String city;
 	
 	private String district;
+	
+	private String direction;
+	
+	private int type;
 	
 	private int coord_type;
 	
@@ -35,11 +41,11 @@ public class GeoSearchDTO {
 		this.uid = uid;
 	}
 
-	public String getGeotable_id() {
+	public int getGeotable_id() {
 		return geotable_id;
 	}
 
-	public void setGeotable_id(String geotable_id) {
+	public void setGeotable_id(int geotable_id) {
 		this.geotable_id = geotable_id;
 	}
 
@@ -67,6 +73,14 @@ public class GeoSearchDTO {
 		this.province = province;
 	}
 
+	public int getCreate_time() {
+		return create_time;
+	}
+
+	public void setCreate_time(int create_time) {
+		this.create_time = create_time;
+	}
+
 	public String getCity() {
 		return city;
 	}
@@ -81,6 +95,22 @@ public class GeoSearchDTO {
 
 	public void setDistrict(String district) {
 		this.district = district;
+	}
+
+	public String getDirection() {
+		return direction;
+	}
+
+	public void setDirection(String direction) {
+		this.direction = direction;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
 	}
 
 	public int getCoord_type() {
@@ -121,5 +151,8 @@ public class GeoSearchDTO {
 
 	public void setWeight(int weight) {
 		this.weight = weight;
-	}
+	} 
+	
+	
+	
 }

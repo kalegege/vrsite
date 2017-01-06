@@ -883,7 +883,7 @@ public class HotelExample extends Page{
         }
     }
 
-    public static class Criterion extends Page{
+    public static class Criterion {
         private String condition;
 
         private Object value;
@@ -899,8 +899,29 @@ public class HotelExample extends Page{
         private boolean listValue;
 
         private String typeHandler;
+        
+        private int offset;
+        
+        private int pageSize;
 
-        public String getCondition() {
+        
+        public int getOffset() {
+			return offset;
+		}
+
+		public void setOffset(int offset) {
+			this.offset = offset;
+		}
+
+		public int getPageSize() {
+			return pageSize;
+		}
+
+		public void setPageSize(int pageSize) {
+			this.pageSize = pageSize;
+		}
+
+		public String getCondition() {
             return condition;
         }
 

@@ -2,22 +2,22 @@ package com.wasu.vrsite.entity;
 
 import java.util.Date;
 
-public class Recommend {
+public class CityHotel {
     private Integer id;
 
-    private String name;
+    private String cityName;
 
-    private Integer uid;
+    private Integer cityId;
 
-    private String poster;
+    private String hotelName;
 
-    private String url;
+    private Integer hotelId;
+
+    private String description;
 
     private String longitude;
 
     private String latitude;
-
-    private String description;
 
     private Integer type;
 
@@ -35,36 +35,44 @@ public class Recommend {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getCityName() {
+        return cityName;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setCityName(String cityName) {
+        this.cityName = cityName == null ? null : cityName.trim();
     }
 
-    public Integer getUid() {
-        return uid;
+    public Integer getCityId() {
+        return cityId;
     }
 
-    public void setUid(Integer uid) {
-        this.uid = uid;
+    public void setCityId(Integer cityId) {
+        this.cityId = cityId;
     }
 
-    public String getPoster() {
-        return poster;
+    public String getHotelName() {
+        return hotelName;
     }
 
-    public void setPoster(String poster) {
-        this.poster = poster == null ? null : poster.trim();
+    public void setHotelName(String hotelName) {
+        this.hotelName = hotelName == null ? null : hotelName.trim();
     }
 
-    public String getUrl() {
-        return url;
+    public Integer getHotelId() {
+        return hotelId;
     }
 
-    public void setUrl(String url) {
-        this.url = url == null ? null : url.trim();
+    public void setHotelId(Integer hotelId) {
+        this.hotelId = hotelId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description == null ? null : description.trim();
     }
 
     public String getLongitude() {
@@ -81,14 +89,6 @@ public class Recommend {
 
     public void setLatitude(String latitude) {
         this.latitude = latitude == null ? null : latitude.trim();
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
     }
 
     public Integer getType() {

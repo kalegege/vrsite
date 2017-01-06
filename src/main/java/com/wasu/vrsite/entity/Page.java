@@ -1,5 +1,6 @@
 package com.wasu.vrsite.entity;
 
+
 public class Page {
 	
 	private Integer offset;
@@ -21,4 +22,7 @@ public class Page {
 	public void setPageSize(Integer pageSize) {
 		this.pageSize = pageSize;
 	}
+	
+	
+
 }

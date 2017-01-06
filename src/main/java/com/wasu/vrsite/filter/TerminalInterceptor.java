@@ -47,11 +47,13 @@ public class TerminalInterceptor implements HandlerInterceptor {
 	@Override
 	public void postHandle(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2, ModelAndView arg3)
 			throws Exception {
+		
 	}
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         terminalInfoHold.set(new TerminalInfo(request));
+        logger.info(request.getRequestURI());
         return true;
     }
 

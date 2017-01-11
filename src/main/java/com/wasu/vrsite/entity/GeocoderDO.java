@@ -8,4 +8,19 @@ public class GeocoderDO {
 	
 	private GeocoderDTO result;
 
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public GeocoderDTO getResult() {
+		return result;
+	}
+
+	public void setResult(GeocoderDTO result) {
+		this.result = result;
+	}
 }

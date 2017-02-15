@@ -102,6 +102,7 @@ public class FootStepServiceImpl implements IFootStepService {
 		FootStepExample footStepExample = new FootStepExample();
 		FootStepExample.Criteria criteria = footStepExample.createCriteria();
 		criteria.andStatusEqualTo(status);
+		footStepExample.setOrderByClause("gm_modified desc");
 	
 		try{
 			criteria.andImeiEqualTo(iMEI);

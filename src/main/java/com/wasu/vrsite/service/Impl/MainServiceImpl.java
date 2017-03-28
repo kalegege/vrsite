@@ -41,7 +41,7 @@ public class MainServiceImpl implements IMainService{
 	@Resource
 	private BadiduYunUtils badiduYunUtils;
 	
-
+	@Override
 	public Result<PageDevide2<HotelDO>> getDefaultHotel(String cityId,Integer pageIndex, Integer pageSize) {
 
 		Result<PageDevide2<HotelDO>> result = new Result<PageDevide2<HotelDO>>(0);
@@ -130,7 +130,7 @@ public class MainServiceImpl implements IMainService{
 		return result;
 	}
 
-
+	@Override
 	public Result<PageDevide2<HotelDO>> getHotelById(String id, Integer pageIndex, Integer pageSize) throws MyException  {
 		
 		Result<PageDevide2<HotelDO>> result = new Result<PageDevide2<HotelDO>>(0);

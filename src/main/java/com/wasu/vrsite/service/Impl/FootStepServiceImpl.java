@@ -31,15 +31,14 @@ public class FootStepServiceImpl implements IFootStepService {
 	@Resource
 	private CityHotelMapper cityHotelMapper;
 
-	@Override
+
 	public int insert(FootStep footStep) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	@Override
+
 	public List<FootStep> selectBySiteId(String IMEI, String cityId) {
-		// TODO Auto-generated method stub
 		int cityid = Integer.parseInt(cityId);
 		FootStepExample footStepExample = new FootStepExample();
 		FootStepExample.Criteria criteria = footStepExample.createCriteria();
@@ -47,14 +46,13 @@ public class FootStepServiceImpl implements IFootStepService {
 		return footStepMapper.selectByExample(footStepExample);
 	}
 
-	@Override
 	public int updateByHotelId(String IMEI, String hotelId) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	// 添加足迹
-	@Override
+
 	public int addFootStep(String IMEI,String longitude,String latitude, BaseDO baseDO) {
 		// TODO Auto-generated method stub
 		int result = 0;
@@ -95,7 +93,7 @@ public class FootStepServiceImpl implements IFootStepService {
 		return result;
 	}
 
-	@Override
+
 	public  Result<List<FootStepDO>> getFootStep(String iMEI,int status) {
 		// TODO Auto-generated method stub
 		Result<List<FootStepDO>> result=new Result<List<FootStepDO>>(0);
@@ -178,7 +176,7 @@ public class FootStepServiceImpl implements IFootStepService {
 		return result;
 	}
 	//hotel
-	@Override
+
 	public  Result<List<FootStepDO>> getFootStephotel(String iMEI,int status) {
 		// TODO Auto-generated method stub
 		Result<List<FootStepDO>> result=new Result<List<FootStepDO>>(0);
@@ -235,7 +233,7 @@ public class FootStepServiceImpl implements IFootStepService {
 		return result;
 	}
 	
-	@Override
+
 	public  Result<List<FootStepDO>> getFootSteptravel(int status) {
 		// TODO Auto-generated method stub
 		Result<List<FootStepDO>> result=new Result<List<FootStepDO>>(0);

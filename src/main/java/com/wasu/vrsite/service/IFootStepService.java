@@ -11,7 +11,7 @@ import com.wasu.vrsite.entity.SiteDO;
 
 public interface IFootStepService {
 	
-	public List<FootStep> selectBySiteId(String IMEI,String cityId); 
+	List<FootStep> selectBySiteId(String IMEI,String cityId);
 	
 	public int updateByHotelId(String IMEI,String hotelId); 
 	

@@ -163,10 +163,11 @@ public class IndexController {
 		// 调用百度接口获取该点200米内酒店数据
 		double longitudeDO =0;
 		double latitudeDO = 0;
+
 		if(longitude != null && latitude != null){
 			longitudeDO = Double.parseDouble(longitude);
 			latitudeDO = Double.parseDouble(latitude);
-		}else{			
+		}else{
 			RecommendExample recommendExample = new RecommendExample();
 			RecommendExample.Criteria criteria0 = recommendExample.createCriteria();
 			criteria0.andStatusEqualTo(3);
@@ -174,6 +175,7 @@ public class IndexController {
 			longitudeDO=Double.parseDouble(recommends.get(0).getLongitude());
 			latitudeDO=Double.parseDouble(recommends.get(0).getLatitude());
 		}
+
 		PageDevide2<HotelDO> data = new PageDevide2<HotelDO>();
 		HotelDO items = new HotelDO();
 		List<ItemDTO> item1 = new ArrayList<ItemDTO>();

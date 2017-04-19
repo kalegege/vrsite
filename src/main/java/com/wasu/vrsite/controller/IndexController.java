@@ -115,7 +115,7 @@ public class IndexController {
 		String IMEI = appInfo.getIMEI();
 		int status=1;
 		//返回足迹
-		return iFootStepService.getFootStephotel(IMEI,status);
+		return iFootStepService.getFootStephotel("a1e488cda01aa50dbfa09326dd284b265e7b4541",status);
 	}
 	// 通过id获取酒店
 	@RequestMapping(value = "/gethotelbyid")

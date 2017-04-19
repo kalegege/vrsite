@@ -222,7 +222,7 @@
 	  </dependency>
 	</dependencies>
   <build>
-        <finalName>vrsite</finalName>
+        <finalName>vrexperience</finalName>
     <pluginManagement>
         <plugins>
             <plugin>
@@ -261,5 +261,15 @@
 			</plugin>
         </plugins>
     </pluginManagement>
-    </build>
+	  <plugins>
+		  <plugin>
+			  <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-compiler-plugin</artifactId>
+			  <configuration>
+				  <source>1.6</source>
+				  <target>1.6</target>
+			  </configuration>
+		  </plugin>
+	  </plugins>
+  </build>
 </project>
